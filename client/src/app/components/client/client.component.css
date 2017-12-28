@@ -1,0 +1,23 @@
+.button-space {
+margin-top: 0.5em;
+margin-left: 1%;
+}
+
+.addClient{
+  float:right;
+  margin-right: 5%;
+}
+
+.button{
+  bottom: 5%;
+  right: 5%;
+  position: fixed;
+  z-index:1;
+}
+
+.icon{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+}

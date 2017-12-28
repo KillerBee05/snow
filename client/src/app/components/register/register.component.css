@@ -1,0 +1,9 @@
+.example-full-width {
+  width: 100%;
+}
+
+.warning {
+      background-color: #f89406;
+      border-color: #e96506;
+      color: #ffffff;
+    }

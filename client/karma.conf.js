@@ -3,7 +3,7 @@
 
 module.exports = function (config) {
   config.set({
-    basePath: '',
+    basePath: './',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
       require('karma-jasmine'),
@@ -14,6 +14,19 @@ module.exports = function (config) {
     ],
     client:{
       clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+    files: [
+      { pattern: './src/test.ts', watched: false },
+      { pattern: 'src/assets/**/*', watched: false, included: false, served: true },
+    ],
+    proxies: {
+      '/assets/': '/base/src/assets/'
+    },
+    preprocessors: {
+      './src/test.ts': ['@angular/cli']
+    },
+    mime: {
+      'text/x-typescript': ['ts','tsx']
     },
     coverageIstanbulReporter: {
       reports: [ 'html', 'lcovonly' ],
@@ -28,6 +41,10 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+    captureTimeout: 60000, // it was already there
+    browserDisconnectTimeout : 60000,
+    browserDisconnectTolerance : 1,
+    browserNoActivityTimeout : 60000 //by default 10000
   });
 };

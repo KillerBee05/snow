@@ -1,0 +1,27 @@
+<div class="content-heading">Edit Client</div>
+  <div class="panel panel-default">
+     <div class="panel-body">
+        <form [formGroup]="valForm" role="form" (submit)="submitForm($event, valForm.value)">
+           <div class="form-group">
+              <label>First Name</label>
+              <input class="form-control" type="text" placeholder="First Name" formControlName="first_name" [(ngModel)]="first_name" name="first_name"/>
+              <span class="text-danger" *ngIf="valForm.controls['first_name'].hasError('required') && (valForm.controls['first_name'].dirty || valForm.controls['first_name'].touched)">This field is required</span>
+          </div>
+           <div class="form-group">
+              <label>Last Name</label>
+              <input class="form-control" type="text" placeholder="Last Name" formControlName="last_name" [(ngModel)]="last_name" name="last_name" />
+                            <span class="text-danger" *ngIf="valForm.controls['last_name'].hasError('required') && (valForm.controls['last_name'].dirty || valForm.controls['last_name'].touched)">This field is required</span>
+           </div>
+           <div class="form-group">
+              <label>Say something nice</label>
+              <input class="form-control" type="text" placeholder="Say something nice" formControlName="phone" [(ngModel)]="phone" name="phone" />
+              <span class="text-danger" *ngIf="valForm.controls['phone'].hasError('required') && (valForm.controls['phone'].dirty || valForm.controls['phone'].touched)">This field is required</span>
+           </div>
+           <button class="btn btn-sm btn-primary" type="submit">Update</button>
+        </form>
+     </div>
+  </div>
+
+  <button class="btn btn-sm btn-primary back" (click)="goBack()">Back</button>
+
+  <button class="btn btn-sm btn-danger button" (click)="confirmDelete(client)">Delete</button>

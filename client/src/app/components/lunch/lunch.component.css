@@ -1,0 +1,21 @@
+h1 {
+  color: #000;
+}
+* {
+margin-top: 0.5em;
+}
+
+.example-card {
+  width: 400px;
+}
+
+.example-header-image {
+  background-image: url('~/assets/images/volcano.jpg');
+  background-size: cover;
+}
+
+
+
+/*.example-full-width {
+  width: 20%;
+}*/
