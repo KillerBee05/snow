@@ -17,10 +17,10 @@ const swal = require('sweetalert');
 })
 export class RegisterComponent implements OnInit {
     user: User;
-    first_name: string;
+    name: string;
     last_name: string;
     email: string;
-    user_name: string;
+    username: string;
     password: string;
     account_agreed: boolean;
 
@@ -43,9 +43,9 @@ export class RegisterComponent implements OnInit {
         });
 
         this.valForm = formBuilder.group({
-            'first_name': [null, Validators.required],
+            'name': [null, Validators.required],
             'last_name': [null, Validators.required],
-            'user_name': [null, Validators.required],
+            'username': [null, Validators.required],
             'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
             'account_agreed': [null],
             'passwordGroup': this.passwordForm
@@ -55,10 +55,10 @@ export class RegisterComponent implements OnInit {
     submitForm($ev, value: any) {
         $ev.preventDefault();
         const user ={
-          first_name: this.first_name,
+          name: this.name,
           last_name: this.last_name,
           email: this.email,
-          user_name: this.user_name,
+          username: this.username,
           password: this.password,
           account_agreed: this.account_agreed
         }
@@ -79,11 +79,11 @@ export class RegisterComponent implements OnInit {
     addUser(user){
       this.registerService.addUser(user).subscribe(user =>{
         if(user.success){
-          swal(user.msg);
+          swal(user.msg, '', 'success');
           this.router.navigate(['/login']);
         }
         else{
-          swal(user.msg);
+          swal(user.msg, '', 'error');
           this.router.navigate(['/register']);
         }
       });

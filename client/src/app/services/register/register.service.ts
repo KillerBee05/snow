@@ -13,7 +13,7 @@ export class RegisterService {
   addUser(newUser){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8000/user', newUser,{headers:headers})
+    return this.http.post('http://localhost:8000/api/user', newUser,{headers:headers})
       .map(res => res.json());
   }
 

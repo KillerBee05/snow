@@ -12,7 +12,7 @@
                 <form [formGroup]="valForm" class="form-validate mb-lg" role="form" name="valForm" novalidate="" (submit)="submitForm($event, valForm.value)">
                     <div class="form-group has-feedback">
                         <label class="text-muted">First Name</label>
-                        <input class="form-control" type="text" name="first_name" formControlName="first_name" [(ngModel)]="first_name" placeholder="Enter First Name" required=""/>
+                        <input class="form-control" type="text" name="name" formControlName="name" [(ngModel)]="name" placeholder="Enter First Name" required=""/>
                         <span class="fa fa-lock form-control-feedback text-muted"></span>
                         <span class="text-danger" *ngIf="valForm.get('passwordGroup.password').hasError('required') && (valForm.get('passwordGroup.password').dirty || valForm.get('passwordGroup.password').touched)">This field is required</span>
                         <span class="text-danger" *ngIf="valForm.get('passwordGroup.password').hasError('pattern') && (valForm.get('passwordGroup.password').dirty || valForm.get('passwordGroup.password').touched)">Input should match 'a-zA-Z0-9' and 6-10 length</span>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group has-feedback">
                         <label class="text-muted">User Name</label>
-                        <input class="form-control" type="text" name="user_name" formControlName="user_name" placeholder="Enter Username" autocomplete="off" [(ngModel)]="user_name" required="" />
+                        <input class="form-control" type="text" name="username" formControlName="username" placeholder="Enter Username" autocomplete="off" [(ngModel)]="username" required="" />
                         <span class="fa fa-envelope form-control-feedback text-muted"></span>
                         <span class="text-danger" *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">This field is required</span>
                         <span class="text-danger" *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">This field must be a valid email address</span>

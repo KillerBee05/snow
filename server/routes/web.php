@@ -14,19 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/user', function () {
-    return 
-});
+//
+// Route::get('/user', function () {
+//     return
+// });
 
 Auth::routes();
 
-Route::get('/auth', function(){
-  if(!Auth::check()){
-    $user = App\User::find(1);
-    Auth::login($user);
-  }
-  return Auth::user();
-});
 
 Route::get('/home', 'HomeController@index')->name('home');

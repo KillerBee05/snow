@@ -17,9 +17,10 @@ export class AuthService {
 
   //Auth User
   authenticateUser(user){
+  debugger;
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/api/authenticate', user,{headers:headers})
+    return this.http.post('http://localhost:8000/oauth/token', user,{headers:headers})
       .map(res => res.json());
   }
 

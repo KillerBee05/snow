@@ -14,7 +14,7 @@ const swal = require('sweetalert');
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    user_name:string;
+    username:string;
     email:string;
     password:string;
     valForm: FormGroup;
@@ -33,10 +33,16 @@ export class LoginComponent implements OnInit {
 
     }
 
+
+
+
     submitForm($ev, value: any) {
         $ev.preventDefault();
         const user = {
-          email:value.email,
+          client_id: 2,
+          client_secret:'RxsYvHlF6OfI2a37AfOuXOCkrBo3y8NuIET6A9fZ',
+          grant_type:'password',
+          username:value.email,
           password:value.password
         }
         for (let c in this.valForm.controls) {
@@ -50,12 +56,13 @@ export class LoginComponent implements OnInit {
     }
 
     onLogin(user){
+      debugger;
       this.authService.authenticateUser(user)
         .subscribe(user=>{
           if(user.success){
             this.authService.storeUserData(user.token, user.user);
             swal({
-              title:user.msg,
+              title:'Yay',
               text:"Welcome to Ice Demo!",
               type:'success'
             });
@@ -63,8 +70,8 @@ export class LoginComponent implements OnInit {
           }
           else{
             swal({
-              title: user.msg,
-              text: "Ah AH AH, Sorry you didn't say the magic word",
+              title: 'Something Went Wrong :(',
+              text: "Wrong user name or password, please try again",
               type: 'error'
             });
           }
