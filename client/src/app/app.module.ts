@@ -75,7 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
            tokenGetter: () => {
              return localStorage.getItem('id_token');
            },
-           whitelistedDomains: ['http://localhost:3000']
+           whitelistedDomains: ['http://localhost:8000']
          }
        }),
         TranslateModule.forRoot({

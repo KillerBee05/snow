@@ -42,7 +42,10 @@ class UserController extends Controller
         'email' => 'required',
         'password' => 'required'
       ]);
-      
+
+      $user = User::get();
+
+
       $credentials = $request->only('email', 'password');
       try {
         if(!$token = JWTAuth::attempt($credentials)){
@@ -56,7 +59,7 @@ class UserController extends Controller
         ], 500);
       }
       return response()->json([
-        'success' => true, 'token' => $token
+        'success' => true, 'user' =>$user, 'token' => $token
       ], 200);
     }
 

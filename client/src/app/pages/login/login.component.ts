@@ -49,9 +49,11 @@ export class LoginComponent implements OnInit {
     }
 
     onLogin(user){
+      debugger;
       this.authService.authenticateUser(user)
         .subscribe(user=>{
           if(user.success){
+            debugger;
             this.authService.storeUserData(user.token, user.user);
             swal({
               title:'Yay',
