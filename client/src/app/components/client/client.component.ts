@@ -28,16 +28,16 @@ export class ClientComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.authClient().subscribe(client => {
-    this.user = client.user;
-    },
-    err => {
-      console.log(err);
-    });
-
-    this.clientService.getClient()
-      .subscribe(clients =>
-      this.clients = clients);
+    // this.authService.authClient().subscribe(client => {
+    // this.user = client.user;
+    // },
+    // err => {
+    //   console.log(err);
+    // });
+    //
+    // this.clientService.getClient()
+    //   .subscribe(clients =>
+    //   this.clients = clients);
   }
 
   showInfo(client){

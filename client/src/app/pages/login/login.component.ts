@@ -14,7 +14,6 @@ const swal = require('sweetalert');
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    username:string;
     email:string;
     password:string;
     valForm: FormGroup;
@@ -33,16 +32,10 @@ export class LoginComponent implements OnInit {
 
     }
 
-
-
-
     submitForm($ev, value: any) {
         $ev.preventDefault();
         const user = {
-          client_id: 2,
-          client_secret:'RxsYvHlF6OfI2a37AfOuXOCkrBo3y8NuIET6A9fZ',
-          grant_type:'password',
-          username:value.email,
+          email:value.email,
           password:value.password
         }
         for (let c in this.valForm.controls) {
@@ -56,7 +49,6 @@ export class LoginComponent implements OnInit {
     }
 
     onLogin(user){
-      debugger;
       this.authService.authenticateUser(user)
         .subscribe(user=>{
           if(user.success){
