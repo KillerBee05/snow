@@ -18,7 +18,7 @@ const swal = require('sweetalert');
 export class RegisterComponent implements OnInit {
     user: User;
     name: string;
-    last_name: string;
+    lastName: string;
     email: string;
     username: string;
     password: string;
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
 
         this.valForm = formBuilder.group({
             'name': [null, Validators.required],
-            'last_name': [null, Validators.required],
+            'lastName': [null, Validators.required],
             'username': [null, Validators.required],
             'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
             'account_agreed': [null],
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         $ev.preventDefault();
         const user ={
           name: this.name,
-          last_name: this.last_name,
+          lastName: this.lastName,
           email: this.email,
           username: this.username,
           password: this.password,

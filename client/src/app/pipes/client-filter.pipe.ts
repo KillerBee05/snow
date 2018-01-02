@@ -10,7 +10,7 @@ export class ClientFilterPipe implements PipeTransform {
     if(term === undefined) return clients;
     // return updated clients array
     return clients.filter(function(client){
-      return client.first_name.toLowerCase().includes(term.toLowerCase()) || client.last_name.toLowerCase().includes(term.toLowerCase());
+      return client.firstName.toLowerCase().includes(term.toLowerCase()) || client.lastName.toLowerCase().includes(term.toLowerCase());
     })
   }
 

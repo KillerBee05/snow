@@ -13,9 +13,9 @@ const swal = require('sweetalert');
 export class ClientComponent implements OnInit {
   clients: Client[];
   client: Client;
-  first_name: string;
-  last_name: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
+  description: string;
 
   user:Object;
 
@@ -28,16 +28,17 @@ export class ClientComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.authService.authClient().subscribe(client => {
-    // this.user = client.user;
-    // },
-    // err => {
-    //   console.log(err);
-    // });
-    //
-    // this.clientService.getClient()
-    //   .subscribe(clients =>
-    //   this.clients = clients);
+    debugger;
+    this.authService.authClient().subscribe(client => {
+    this.user = client.user;
+    },
+    err => {
+      console.log(err);
+    });
+
+    this.clientService.getClient()
+      .subscribe(clients =>
+      this.clients = clients);
   }
 
   showInfo(client){
@@ -48,9 +49,9 @@ export class ClientComponent implements OnInit {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         clientId: client._id,
-        first_name: client.first_name,
-        last_name: client.last_name,
-        phone: client.phone
+        firstName: client.firstName,
+        lastName: client.lastName,
+        description: client.description
       }
     };
     this.router.navigate(['/edit-client'], navigationExtras);

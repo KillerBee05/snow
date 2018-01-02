@@ -14,15 +14,15 @@ const swal = require('sweetalert');
 })
 export class AddClientComponent implements OnInit {
   client: Client;
-  first_name: string;
-  last_name: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
+  description: string;
   valForm: FormGroup;
 
   togglePersonal: boolean = true;
   toggleContact: boolean =false;
   toggleRace: boolean = false;
-  
+
   constructor(
     private clientService: ClientService,
     private router: Router,
@@ -30,9 +30,9 @@ export class AddClientComponent implements OnInit {
     formBuilder: FormBuilder
   ) {
       this.valForm = formBuilder.group({
-        'first_name': [null, Validators.compose([Validators.required, CustomValidators.first_name])],
-        'last_name': [null, Validators.compose([Validators.required, CustomValidators.last_name])],
-        'phone': [null, Validators.required]
+        'firstName': [null, Validators.compose([Validators.required, CustomValidators.firstName])],
+        'lastName': [null, Validators.compose([Validators.required, CustomValidators.lastName])],
+        'description': [null, Validators.required]
       });
   }
 
@@ -60,9 +60,9 @@ export class AddClientComponent implements OnInit {
   submitForm($ev, value: any) {
       $ev.preventDefault();
       const user = {
-        first_name:value.first_name,
-        last_name:value.last_name,
-        phone:value.phone,
+        firstName:value.firstName,
+        lastName:value.lastName,
+        description:value.description,
       }
       for (let c in this.valForm.controls) {
           this.valForm.controls[c].markAsTouched();
@@ -81,9 +81,9 @@ export class AddClientComponent implements OnInit {
 
   addClient(){
     const newClient = {
-      first_name: this.first_name,
-      last_name: this.last_name,
-      phone: this.phone
+      firstName: this.firstName,
+      lastName: this.lastName,
+      description: this.description
     }
     this.clientService.addClient(newClient)
       .subscribe(client =>{

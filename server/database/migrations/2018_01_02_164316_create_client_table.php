@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateOauthPersonalAccessClientsTable extends Migration
+
+class CreateClientTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,12 +13,15 @@ class CreateOauthPersonalAccessClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('client_id')->index();
             $table->timestamps();
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('description');
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -24,6 +29,6 @@ class CreateOauthPersonalAccessClientsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('oauth_personal_access_clients');
+        Schema::dropIfExists('clients');
     }
 }

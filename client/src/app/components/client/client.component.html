@@ -1,14 +1,14 @@
 <div class="content-heading">Client Records </div>
-<input type="text" class="form-control panel panel-default" [(ngModel)]="term" placeholder="client filter">
-  <!-- <div *ngFor = "let client of clients | clientFilter:term">
+<!-- <input type="text" class="form-control panel panel-default" [(ngModel)]="term" placeholder="client filter"> -->
+  <div *ngFor = "let client of clients">
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                  <h3>{{client.first_name}} {{client.last_name}}</h3>
+                  <h3>{{client.firstName}} {{client.lastName}}</h3>
 
                   <p *ngIf="toggleInfo[client._id]">
-                    {{client.phone}}
+                    {{client.description}}
                   </p>
 
                   <button class="mb-sm btn btn-info button-space " type="button" (click)="showInfo(client)">View Client</button>
@@ -18,9 +18,7 @@
             </div>
         </div>
     </div>
-  </div> -->
-  <p>HIO</p>
-
+  </div>
   <button type="button" class="button mb-sm btn btn-green" (click)="newClient()">
     Add Client
   </button>

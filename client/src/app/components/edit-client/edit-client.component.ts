@@ -17,9 +17,9 @@ const swal = require('sweetalert');
 
 export class EditClientComponent implements OnInit {
   clientId: string;
-  first_name: string;
-  last_name: string;
-  phone: string;
+  firstName: string;
+  lastName: string;
+  description: string;
   valForm: FormGroup;
 
   constructor(
@@ -31,18 +31,18 @@ export class EditClientComponent implements OnInit {
     formBuilder: FormBuilder
   ) {
       this.valForm = formBuilder.group({
-        'first_name': [null, Validators.compose([Validators.required, CustomValidators.first_name])],
-        'last_name': [null, Validators.compose([Validators.required, CustomValidators.last_name])],
-        'phone': [null, Validators.required]
+        'firstName': [null, Validators.compose([Validators.required, CustomValidators.firstName])],
+        'lastName': [null, Validators.compose([Validators.required, CustomValidators.lastName])],
+        'description': [null, Validators.required]
       });
     }
 
   ngOnInit() {
     this.router.queryParams.subscribe(params =>{
       this.clientId = params['clientId'];
-      this.first_name = params['first_name'];
-      this.last_name = params['last_name'];
-      this.phone = params['phone'];
+      this.firstName = params['firstName'];
+      this.lastName = params['lastName'];
+      this.description = params['description'];
     });
   }
 
@@ -53,9 +53,9 @@ export class EditClientComponent implements OnInit {
   submitForm($ev, value: any, params) {
       $ev.preventDefault();
       const user = {
-        first_name:value.first_name,
-        last_name:value.last_name,
-        phone:value.phone,
+        firstName:value.firstName,
+        lastName:value.lastName,
+        description:value.description,
       }
       for (let c in this.valForm.controls) {
           this.valForm.controls[c].markAsTouched();
@@ -70,9 +70,9 @@ export class EditClientComponent implements OnInit {
   updateClient(params){
     const updateClient: Client ={
       _id: this.clientId,
-      first_name: this.first_name,
-      last_name: this.last_name,
-      phone: this.phone
+      firstName: this.firstName,
+      lastName: this.lastName,
+      description: this.description
     }
     this.clientService.updateClient(updateClient)
     .subscribe(result =>{

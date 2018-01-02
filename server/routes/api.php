@@ -21,19 +21,36 @@ Route::post('/user', [
   'uses' => 'UserController@createUser'
 ]);
 
+Route::get('/user', [
+  'uses' => 'UserController@getUsers'
+]);
+
+Route::put('/user/{id}', [
+  'uses' => 'UserController@putUser'
+]);
+
+Route::delete('/user/{id}', [
+  'uses' => 'UserController@deleteUser'
+]);
+
 // Authenticate User
 Route::post('/user/signIn', [
   'uses' => 'UserController@signIn'
 ]);
 
-Route::get('/user', [
-  'uses' => 'UserController@getUsers'
+// Client API Calls
+Route::post('/client', [
+  'uses' => 'ClientController@createClient'
 ]);
 
-Route::put('/user', [
-  'uses' => 'UserController@putUser'
+Route::get('/client', [
+  'uses' => 'ClientController@getClients'
 ]);
 
-Route::delete('/user', [
-  'uses' => 'UserController@deleteUser'
+Route::put('/client/{id}', [
+  'uses' => 'ClientController@putClient'
+]);
+
+Route::delete('/client/{id}', [
+  'uses' => 'ClientController@deleteClient'
 ]);

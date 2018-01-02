@@ -12,8 +12,8 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 })
 export class RegisterComponent implements OnInit {
   user: User;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   user_name: string;
   password: string;
@@ -28,8 +28,8 @@ export class RegisterComponent implements OnInit {
 
   addUser(){
     const newUser ={
-      first_name: this.first_name,
-      last_name: this.last_name,
+      firstName: this.firstName,
+      lastName: this.lastName,
       email: this.email,
       user_name: this.user_name,
       password: this.password
