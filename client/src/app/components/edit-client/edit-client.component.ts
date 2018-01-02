@@ -69,7 +69,7 @@ export class EditClientComponent implements OnInit {
 
   updateClient(params){
     const updateClient: Client ={
-      _id: this.clientId,
+      id: this.clientId,
       firstName: this.firstName,
       lastName: this.lastName,
       description: this.description

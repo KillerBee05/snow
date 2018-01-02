@@ -28,13 +28,12 @@ export class ClientComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    debugger;
-    this.authService.authClient().subscribe(client => {
-    this.user = client.user;
-    },
-    err => {
-      console.log(err);
-    });
+    // this.authService.authClient().subscribe(client => {
+    // this.user = client.user;
+    // },
+    // err => {
+    //   console.log(err);
+    // });
 
     this.clientService.getClient()
       .subscribe(clients =>
@@ -48,7 +47,7 @@ export class ClientComponent implements OnInit {
   grabClient(client){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        clientId: client._id,
+        clientId: client.id,
         firstName: client.firstName,
         lastName: client.lastName,
         description: client.description
@@ -85,11 +84,9 @@ export class ClientComponent implements OnInit {
     var clients = this.clients;
     this.clientService.deleteClient(id)
       .subscribe(data =>{
-        if(data.n==1){
-          for(var i = 0; i < clients.length; i++){
-            if(clients[i]._id == id){
-              clients.splice(i,1);
-            }
+        for(var i = 0; i < clients.length; i++){
+          if(clients[i].id == id){
+            clients.splice(i,1);
           }
         }
       });

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {Client} from '../../models/client/client';
 import 'rxjs/add/operator/map';
+import {Observable} from "rxjs";
 
 
 @Injectable()
@@ -10,7 +11,7 @@ export class ClientService {
   constructor(private http: Http) { }
 
   // retrieving ClientService
-  getClient(){
+  getClient(): Observable<any>{
     return this.http.get('http://localhost:8000/api/client')
     .map(res => res.json().clients);
   }
@@ -27,7 +28,7 @@ export class ClientService {
   updateClient(newClient){
   var headers = new Headers();
   headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:8000/api/client/'+newClient._id, newClient, {headers:headers})
+    return this.http.put('http://localhost:8000/api/client/'+newClient.id, newClient, {headers:headers})
       .map(res => res.json());
   }
 
@@ -41,7 +42,7 @@ export class ClientService {
   grabClient(client){
   var headers = new Headers();
   headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:8000/api/client/'+client._id, {headers:headers})
+    return this.http.get('http://localhost:8000/api/client/'+client.id, {headers:headers})
       .map(res => res.json());
   }
 }
